@@ -1,0 +1,18 @@
+{% include 'poetryapp/layout/header.html' %}
+
+<div class="home-container" style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 2.5em; color: #4b0082; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Welcome to Poem Hub</h2>
+    <p style="font-size: 1.2em; color: #555;">Explore a world of enchanting poetry.</p>
+    
+    <div class="search-bar" style="margin-top: 30px;">
+        <form method="get" action="{% url 'search_poem' %}" style="display: flex; justify-content: center;">
+            <input type="text" name="q" placeholder="Search for an author or poem..." 
+                   style="padding: 15px; width: 50%; font-size: 1.2em; border: 2px solid #6a4c9c; border-radius: 25px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"/>
+            <button type="submit" style="padding: 15px 30px; font-size: 1.2em; background-color: #6a4c9c; color: white; border: none; border-radius: 25px; cursor: pointer; margin-left: 15px;">
+                Search
+            </button>
+        </form>
+    </div>
+</div>
+
+{% include 'poetryapp/layout/footer.html' %}
