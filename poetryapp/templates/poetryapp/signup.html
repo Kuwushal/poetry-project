@@ -1,0 +1,177 @@
+{% include 'poetryapp/layout/header.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h2 class="title">Sign Up</h2>
+    <form method="post" class="form">
+      {% csrf_token %}
+      <div class="input-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+      </div>
+      <div class="input-group">
+        <label for="{{ form.password1.id_for_label }}">Password</label>
+        {{ form.password1 }}
+      </div>
+      <div class="input-group">
+        <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+        {{ form.password2 }}
+      </div>
+      <button type="submit" class="sign">Sign Up</button>
+    </form>
+
+    <p class="signup">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+
+  <style>
+    /* Center the form-container */
+    .form-container {
+      width: 320px;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #6a0dad, #9b4dca, #a367f7); /* Purple gradient background */
+      padding: 2rem;
+      color: rgba(243, 244, 246, 1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center it */
+    }
+  
+    .title {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 700;
+    }
+  
+    .form {
+      margin-top: 1.5rem;
+    }
+  
+    .input-group {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  
+    .input-group label {
+      display: block;
+      color: rgba(156, 163, 175, 1);
+      margin-bottom: 4px;
+    }
+  
+    .input-group input {
+      width: 100%;
+      max-width: 100%; /* Ensure it doesn't stretch out */
+      box-sizing: border-box; /* Keeps padding within width */
+      border-radius: 0.375rem;
+      border: 1px solid rgba(55, 65, 81, 1);
+      outline: 0;
+      background-color: rgba(17, 24, 39, 1);
+      padding: 0.75rem 1rem;
+      color: rgba(243, 244, 246, 1);
+    }
+  
+    .input-group input:focus {
+      border-color: rgba(167, 139, 250);
+    }
+  
+    /* Sign Up button styling */
+    .sign {
+      display: block;
+      width: 100%;
+      background-color: rgba(167, 139, 250, 1);
+      padding: 1rem; /* Added padding */
+      text-align: center;
+      color: rgba(17, 24, 39, 1);
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease; /* Smooth hover transition */
+    }
+  
+    .sign:hover {
+      background-color: rgba(123, 94, 220, 1); /* Darker purple on hover */
+    }
+  
+    /* Add padding and some visual style for the login link */
+    .signup {
+      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgba(156, 163, 175, 1);
+      margin-top: 1rem;
+    }
+  
+    .signup a {
+      color: rgba(243, 244, 246, 1);
+      text-decoration: none;
+      font-size: 14px;
+    }
+  
+    .signup a:hover {
+      text-decoration: underline rgba(167, 139, 250, 1);
+    }
+  
+    .forgot {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgba(156, 163, 175, 1);
+      margin: 8px 0 14px 0;
+    }
+  
+    .forgot a {
+      color: rgba(243, 244, 246, 1);
+      text-decoration: none;
+      font-size: 14px;
+    }
+  
+    .forgot a:hover {
+      text-decoration: underline rgba(167, 139, 250, 1);
+    }
+  
+    .social-message {
+      display: flex;
+      align-items: center;
+      padding-top: 1rem;
+    }
+  
+    .line {
+      height: 1px;
+      flex: 1 1 0%;
+      background-color: rgba(55, 65, 81, 1);
+    }
+  
+    .social-message .message {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: rgba(156, 163, 175, 1);
+    }
+  
+    .social-icons {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .social-icons .icon {
+      border-radius: 0.125rem;
+      padding: 0.75rem;
+      border: none;
+      background-color: transparent;
+      margin-left: 8px;
+    }
+  
+    .social-icons .icon svg {
+      height: 1.25rem;
+      width: 1.25rem;
+      fill: #fff;
+    }
+  </style>
+  
+  
+{% endblock %}
