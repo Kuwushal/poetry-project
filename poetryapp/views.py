@@ -4,6 +4,12 @@ from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from .forms import EditProfileForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
+from poetryapp.models import Profile
+
 
 
 def home(request):
@@ -82,6 +88,25 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@login_required
+def profile_view(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'poetryapp/profile.html', {'profile': profile})
+
+@login_required
+def edit_profile_view(request):
+    profile = Profile.objects.get(user=request.user)
+    
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Redirect back to the profile page
+    else:
+        form = EditProfileForm(instance=profile)
+    
+    return render(request, 'poetryapp/edit_profile.html', {'form': form})
 
 def write_poem(request):
     return render(request, 'poetryapp/write_poem.html')
